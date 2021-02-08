@@ -10,6 +10,8 @@ public class Movement : MonoBehaviour
     public bool isGrounded;
     public bool isSecondJumpAvailable;
 
+    Checkpoint checkPoint;
+
     void Update()
     {
         if (Input.GetKey(KeyCode.W))
@@ -45,5 +47,11 @@ public class Movement : MonoBehaviour
                 isSecondJumpAvailable = false;
             }
         }
+
+    }
+
+    public void SetLastCheckPoint(Checkpoint checkPoint)
+    {
+        this.checkPoint = checkPoint;
     }
 }
