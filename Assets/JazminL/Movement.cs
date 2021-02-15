@@ -8,7 +8,6 @@ public class Movement : MonoBehaviour
     public float rotationSpeed;
     public float jumpforce;
     public bool isGrounded;
-    public bool isSecondJumpAvailable;
 
     Checkpoint checkPoint;
 
@@ -36,16 +35,11 @@ public class Movement : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.Space) && (isGrounded || isSecondJumpAvailable))
+        if (Input.GetKeyDown(KeyCode.Space) && (isGrounded))
         {
             Rigidbody rigibody = GetComponent<Rigidbody>();
             rigibody.AddForce(Vector3.up * jumpforce, ForceMode.Impulse);
             transform.position += Vector3.up * speed * Time.deltaTime;
-
-            if (!isGrounded && isSecondJumpAvailable)
-            {
-                isSecondJumpAvailable = false;
-            }
         }
 
     }
