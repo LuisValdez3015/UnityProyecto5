@@ -5,19 +5,20 @@ using UnityEngine.AI;
 
 public class EnemyFollow : MonoBehaviour
 {
-    [SerializeField] Transform target;
-    [SerializeField] float speed = 4f;
-    Rigidbody rb;
-    void Start()
+    [SerializeField] NavMeshAgent agent;
+    [SerializeField] GameObject player;
+    private Vector3 pPosition;
+    
+    private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 position = Vector3.MoveTowards(transform.position, target.position, speed * Time.fixedDeltaTime);
-        rb.MovePosition(position);
-        transform.LookAt(target);
+        player = GameObject.FindGameObjectWithTag("Player");
+        pPosition = player.transform.position;
+        agent.SetDestination(pPosition);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
 {
-
+    public Texture2D cursor;
     // 2. Agregar sensibilidad a movimiento de camara
     public float mouseSensitivityX = 100f;
     public float mouseSensitivityY = 100f;
@@ -19,6 +19,8 @@ public class PlayerLook : MonoBehaviour
     {
         // 8.Hacer que el cursor se quee en su lugar
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.SetCursor(cursor, Vector2.zero, CursorMode.ForceSoftware);
+
     }
 
     void Update()
@@ -37,7 +39,6 @@ public class PlayerLook : MonoBehaviour
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
         // 4.Hacer que rote el cuerpo del jugador con el movimiento de nuestro mouse
-        playerBody.Rotate(Vector3.up * mouseY);
-        playerBody.Rotate(Vector3.right * mouseX);
+        playerBody.Rotate(Vector3.up * mouseX);
     }
 }
