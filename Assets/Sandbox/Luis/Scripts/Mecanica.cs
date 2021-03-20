@@ -10,7 +10,4 @@ public class Mecanica : MonoBehaviour
     {
         CuboAzul.SetActive(true);
     }
-
-
-
 }
